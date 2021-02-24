@@ -1,15 +1,16 @@
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
-import {User} from '../entities/users';
+import { getCustomRepository } from 'typeorm';
+import { userRepositorie } from '../repositories/userRepositorie';
+
 
 class UserController{
     async create(request: Request, response: Response): Promise<Response>{
         const {name,email} = request.body;
-        const userRepository = getRepository(User);
+        const userRepository = getCustomRepository(userRepositorie);
 
-        const alredyEsxist = await userRepository.findOne({
-            where: email
-        })
+        const alredyEsxist = await userRepository.query(`
+            SELECT * FROM users where email = '${email}' 
+        `);
 
         if (alredyEsxist) {
             return response.status(400).json({
