@@ -17,6 +17,13 @@ class SurveysController{
 
         return response.status(200).json(surveyCreated);
     }
+
+    async show(request: Request, response: Response): Promise<Response>{
+        const surveysRepositorie = getCustomRepository(SurveysRepositorie);
+        const all = await surveysRepositorie.query(`SELECT * FROM surveys;`);
+
+        return response.json(all);
+    }
 }
 
 export { SurveysController };

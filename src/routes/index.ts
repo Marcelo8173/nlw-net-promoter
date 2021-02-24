@@ -12,5 +12,6 @@ routes.get('/users', (resquest: Request, response: Response) => {
 
 routes.post('/users', userController.create);
 routes.post('/survey', surveysController.create);
+routes.get('/survey', surveysController.show);
 
 export default routes;
