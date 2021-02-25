@@ -1,9 +1,8 @@
 import 'reflect-metadata';
 import express, { json } from 'express';
 import routes from './routes/index';
-import createConnection from './database/typeorm';
+import './database/typeorm';
 
-createConnection();
 const app = express();
 app.use(json());
 

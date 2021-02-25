@@ -14,11 +14,11 @@ export class CreateSurveysUsers1614261210285 implements MigrationInterface {
                     },
                     {
                         name: 'user_id',
-                        type: 'varchar',
+                        type: 'uuid',
                     },
                     {
                         name: 'survey_id',
-                        type: 'varchar'
+                        type: 'uuid'
                     },
                     {
                         name: 'value',
