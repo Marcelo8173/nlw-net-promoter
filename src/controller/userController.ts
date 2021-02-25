@@ -9,10 +9,10 @@ class UserController{
         const userRepository = getCustomRepository(userRepositorie);
 
         const alredyEsxist = await userRepository.query(`
-            SELECT * FROM users where email = '${email}' 
+        select * from users where email = '${email}' 
         `);
 
-        if (alredyEsxist) {
+        if (alredyEsxist.length !== 0) {
             return response.status(400).json({
                 error: 'user alredy exist'
             });
@@ -25,7 +25,7 @@ class UserController{
 
         await userRepository.save(user);
 
-        return response.json(user);
+        return response.status(201).json(user);
     }
 }
 
